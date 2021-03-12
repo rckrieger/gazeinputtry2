@@ -1,0 +1,505 @@
+﻿<!--
+Copyright (c) Microsoft Corporation.  All rights reserved.
+    
+The MIT License (MIT)
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+    
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+    
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+    
+<Page
+    x:Class="gazeinput.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:gazeinput"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"    
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="containerGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="HeaderPanel" 
+                    Orientation="Horizontal" 
+                    Grid.Row="0">
+                <StackPanel.Transitions>
+                    <TransitionCollection>
+                        <AddDeleteThemeTransition/>
+                    </TransitionCollection>
+                </StackPanel.Transitions>
+                <TextBlock x:Name="Header" 
+                       Text="Scratch and win reading sample" 
+                       Style="{ThemeResource HeaderTextBlockStyle}" 
+                       Margin="10,0,0,0" />
+                <TextBlock x:Name="TrackerCounterLabel"
+                       VerticalAlignment="Center"                 
+                       Style="{ThemeResource BodyTextBlockStyle}"
+                       Text="Number of trackers: " 
+                       Margin="50,0,0,0"/>
+                <TextBlock x:Name="TrackerCounter"
+                       VerticalAlignment="Center"                 
+                       Style="{ThemeResource BodyTextBlockStyle}"
+                       Text="0" 
+                       Margin="10,0,0,0"/>
+                <TextBlock x:Name="TrackerStateLabel"
+                       VerticalAlignment="Center"                 
+                       Style="{ThemeResource BodyTextBlockStyle}"
+                       Text="State: " 
+                       Margin="50,0,0,0"/>
+                <TextBlock x:Name="TrackerState"
+                       VerticalAlignment="Center"                 
+                       Style="{ThemeResource BodyTextBlockStyle}"
+                       Text="n/a" 
+                       Margin="10,0,0,0"/>
+            </StackPanel>
+            <Canvas x:Name="gazePositionCanvas" Grid.Row="1">
+                <controls:RadialProgressBar
+                    x:Name="GazeRadialProgressBar" 
+                    Value="0"
+                    Foreground="Blue" 
+                    Background="White"
+                    Thickness="4"
+                    Minimum="0"
+                    Maximum="100"
+                    Width="100"
+                    Height="100"
+                    Outline="Gray"
+                    Visibility="Collapsed"/>            
+                <Ellipse 
+                    x:Name="eyeGazePositionEllipse"  
+                    Width="20" Height="20" 
+                    Fill="Blue" 
+                    Opacity="0.5" 
+                    Visibility="Collapsed">                
+                </Ellipse>
+                <TextBox Canvas.Left="10" Canvas.Top="34" Text="The story was first recorded in narrative form by English writer and poet Robert Southey, and first published anonymously as &quot;The Story of the Three Bears&quot; in 1837 in a volume of his writings called The Doctor.[2] The same year Southey's tale was published, the story was versified by editor George Nicol, who acknowledged the anonymous author of The Doctor as &quot;the great, original concocter&quot; of the tale.[3][4] Southey was delighted with Nicol's effort to bring more exposure to the tale, concerned children might overlook it in The Doctor.[5] Nicol's version was illustrated with engravings by B. Hart (after &quot;C.J.&quot;), and was reissued in 1848 with Southey identified as the story's author.[6] The story was first recorded in narrative form by English writer and poet Robert Southey, and first published anonymously as &quot;The Story of the Three Bears&quot; in 1837 in a volume of his writings called The Doctor.[2] The same year Southey's tale was published, the story was versified by editor George Nicol, who acknowledged the anonymous author of The Doctor as &quot;the great, original concocter&quot; of the tale.[3][4] Southey was delighted with Nicol's effort to bring more exposure to the tale, concerned children might overlook it in The Doctor.[5] Nicol's version was illustrated with engravings by B. Hart (after &quot;C.J.&quot;), and was reissued in 1848 with Southey identified as the story's author.[6]The story was first recorded in narrative form by English writer and poet Robert Southey, and first published anonymously as &quot;The Story of the Three Bears&quot; in 1837 in a volume of his writings called The Doctor.[2] The same year Southey's tale was published, the story was versified by editor George Nicol, who acknowledged the anonymous author of The Doctor as &quot;the great, original concocter&quot; of the tale.[3][4] Southey was delighted with Nicol's effort to bring more exposure to the tale, concerned children might overlook it in The Doctor.[5] Nicol's version was illustrated with engravings by B. Hart (after &quot;C.J.&quot;), and was reissued in 1848 with Southey identified as the story's author.[6]The story was first recorded in narrative form by English writer and poet Robert Southey, and first published anonymously as &quot;The Story of the Three Bears&quot; in 1837 in a volume of his writings called The Doctor.[2] The same year Southey's tale was published, the story was versified by editor George Nicol, who acknowledged the anonymous author of The Doctor as &quot;the great, original concocter&quot; of the tale.[3][4] Southey was delighted with Nicol's effort to bring more exposure to the tale, concerned children might overlook it in The Doctor.[5] Nicol's version was illustrated with engravings by B. Hart (after &quot;C.J.&quot;), and was reissued in 1848 with Southey identified as the story's author.[6]The story was first recorded in narrative form by English writer and poet Robert Southey, and first published anonymously as &quot;The Story of the Three Bears&quot; in 1837 in a volume of his writings called The Doctor.[2] The same year Southey's tale was published, the story was versified by editor George Nicol, who acknowledged the anonymous author of The Doctor as &quot;the great, original concocter&quot; of the tale.[3][4] Southey was delighted with Nicol's effort to bring more exposure to the tale, concerned children might overlook it in The Doctor.[5] Nicol's version was illustrated with engravings by B. Hart (after &quot;C.J.&quot;), and was reissued in 1848 with Southey identified as the story's author.[6] The story was first recorded in narrative form by English writer and poet Robert Southey, and first published anonymously as &quot;The Story of the Three Bears&quot; in 1837 in a volume of his writings called The Doctor.[2] The same year Southey's tale was published, the story was versified by editor George Nicol, who acknowledged the anonymous author of The Doctor as &quot;the great, original concocter&quot; of the tale.[3][4] Southey was delighted with Nicol's effort to bring more exposure to the tale, concerned children might overlook it in The Doctor.[5] Nicol's version was illustrated with engravings by B. Hart (after &quot;C.J.&quot;), and was reissued in 1848 with Southey identified as the story's author.[6]The story was first recorded in narrative form by English writer and poet Robert Southey, and first published anonymously as &quot;The Story of the Three Bears&quot; in 1837 in a volume of his writings called The Doctor.[2] The same year Southey's tale was published, the story was versified by editor George Nicol, who acknowledged the anonymous author of The Doctor as &quot;the great, original concocter&quot; of the tale.[3][4] Southey was delighted with Nicol's effort to bring more exposure to the tale, concerned children might overlook it in The Doctor.[5] Nicol's version was illustrated with engravings by B. Hart (after &quot;C.J.&quot;), and was reissued in 1848 with Southey identified as the story's author.[6]The story was first recorded in narrative form by English writer and poet Robert Southey, and first published anonymously as &quot;The Story of the Three Bears&quot; in 1837 in a volume of his writings called The Doctor.[2] The same year Southey's tale was published, the story was versified by editor George Nicol, who acknowledged the anonymous author of The Doctor as &quot;the great, original concocter&quot; of the tale.[3][4] Southey was delighted with Nicol's effort to bring more exposure to the tale, concerned children might overlook it in The Doctor.[5] Nicol's version was illustrated with engravings by B. Hart (after &quot;C.J.&quot;), and was reissued in 1848 with Southey identified as the story's author.[6]The story was first recorded in narrative form by English writer and poet Robert Southey, and first published anonymously as &quot;The Story of the Three Bears&quot; in 1837 in a volume of his writings called The Doctor.[2] The same year Southey's tale was published, the story was versified by editor George Nicol, who acknowledged the anonymous author of The Doctor as &quot;the great, original concocter&quot; of the tale.[3][4] Southey was delighted with Nicol's effort to bring more exposure to the tale, concerned children might overlook it in The Doctor.[5] Nicol's version was illustrated with engravings by B. Hart (after &quot;C.J.&quot;), and was reissued in 1848 with Southey identified as the story's author.[6]" TextWrapping="Wrap" Height="620" Width="1432" IsReadOnly="True"/>
+                <Rectangle x:Name="rect0_0" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_1" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_2" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_3" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_4" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_5" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_6" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_7" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_8" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_9" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_10" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_11" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_12" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_13" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_14" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_15" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_16" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_17" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_18" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_19" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_20" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_21" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_22" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_23" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_24" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect0_25" Height="25" Canvas.Left="0" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+                
+                <Rectangle x:Name="rect1_0" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_1" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_2" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_3" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_4" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_5" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_6" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_7" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_8" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_9" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_10" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_11" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_12" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_13" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_14" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_15" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_16" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_17" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_18" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_19" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_20" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_21" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_22" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_23" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_24" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect1_25" Height="25" Canvas.Left="100" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+                <Rectangle x:Name="rect2_0" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_1" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_2" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_3" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_4" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_5" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_6" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_7" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_8" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_9" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_10" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_11" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_12" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_13" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_14" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_15" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_16" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_17" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_18" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_19" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_20" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_21" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_22" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_23" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_24" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect2_25" Height="25" Canvas.Left="200" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+                <Rectangle x:Name="rect3_0" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_1" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_2" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_3" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_4" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_5" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_6" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_7" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_8" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_9" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_10" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_11" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_12" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_13" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_14" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_15" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_16" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_17" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_18" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_19" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_20" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_21" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_22" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_23" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_24" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect3_25" Height="25" Canvas.Left="300" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+                <Rectangle x:Name="rect4_0" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_1" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_2" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_3" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_4" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_5" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_6" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_7" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_8" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_9" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_10" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_11" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_12" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_13" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_14" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_15" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_16" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_17" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_18" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_19" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_20" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_21" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_22" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_23" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_24" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect4_25" Height="25" Canvas.Left="400" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+
+                <Rectangle x:Name="rect5_0" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_1" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_2" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_3" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_4" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_5" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_6" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_7" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_8" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_9" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_10" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_11" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_12" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_13" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_14" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_15" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_16" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_17" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_18" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_19" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_20" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_21" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_22" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_23" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_24" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect5_25" Height="25" Canvas.Left="500" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+                    
+                <Rectangle x:Name="rect6_0" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_1" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_2" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_3" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_4" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_5" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_6" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_7" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_8" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_9" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_10" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_11" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_12" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_13" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_14" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_15" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_16" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_17" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_18" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_19" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_20" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_21" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_22" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_23" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_24" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect6_25" Height="25" Canvas.Left="600" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+                <Rectangle x:Name="rect7_0" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_1" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_2" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_3" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_4" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_5" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_6" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_7" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_8" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_9" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_10" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_11" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_12" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_13" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_14" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_15" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_16" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_17" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_18" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_19" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_20" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_21" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_22" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_23" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_24" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect7_25" Height="25" Canvas.Left="700" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+                <Rectangle x:Name="rect8_0" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_1" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_2" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_3" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_4" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_5" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_6" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_7" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_8" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_9" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_10" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_11" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_12" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_13" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_14" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_15" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_16" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_17" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_18" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_19" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_20" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_21" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_22" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_23" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_24" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect8_25" Height="25" Canvas.Left="800" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+                <Rectangle x:Name="rect9_0" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_1" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_2" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_3" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_4" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_5" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_6" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_7" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_8" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_9" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_10" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_11" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_12" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_13" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_14" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_15" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_16" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_17" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_18" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_19" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_20" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_21" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_22" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_23" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_24" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect9_25" Height="25" Canvas.Left="900" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+                
+                <Rectangle x:Name="rect10_0" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_1" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_2" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_3" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_4" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_5" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_6" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_7" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_8" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_9" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_10" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_11" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_12" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_13" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_14" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_15" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_16" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_17" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_18" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_19" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_20" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_21" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_22" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_23" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_24" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect10_25" Height="25" Canvas.Left="1000" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+                <Rectangle x:Name="rect11_0" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_1" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_2" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_3" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_4" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_5" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_6" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_7" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_8" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_9" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_10" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_11" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_12" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_13" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_14" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_15" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_16" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_17" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_18" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_19" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_20" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_21" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_22" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_23" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_24" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect11_25" Height="25" Canvas.Left="1100" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+                <Rectangle x:Name="rect12_0" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_1" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_2" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_3" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_4" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_5" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_6" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_7" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_8" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_9" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_10" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_11" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_12" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_13" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_14" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_15" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_16" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_17" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_18" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_19" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_20" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_21" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_22" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_23" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_24" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect12_25" Height="25" Canvas.Left="1200" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+                <Rectangle x:Name="rect13_0" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_1" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_2" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_3" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_4" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_5" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_6" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_7" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_8" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_9" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_10" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_11" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_12" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_13" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_14" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_15" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_16" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_17" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_18" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_19" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_20" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_21" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_22" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_23" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_24" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect13_25" Height="25" Canvas.Left="1300" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+                <Rectangle x:Name="rect14_0" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="30" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_1" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="55" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_2" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="80" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_3" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="105" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_4" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="130" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_5" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="155" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_6" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="180" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_7" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="205" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_8" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="230" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_9" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="255" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_10" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="280" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_11" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="305" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_12" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="330" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_13" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="355" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_14" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="380" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_15" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="405" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_16" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="430" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_17" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="455" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_18" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="480" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_19" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="505" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_20" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="530" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_21" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="555" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_22" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="580" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_23" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="605" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_24" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="630" Width="100" Fill="Black"/>
+                <Rectangle x:Name="rect14_25" Height="25" Canvas.Left="1400" Stroke="Black" Canvas.Top="655" Width="100" Fill="Black"/>
+
+               
+
+            </Canvas>
+        </Grid>
+    </Grid>
+</Page>
